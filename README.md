@@ -35,3 +35,7 @@ The analyzer is deterministic and runs entirely in the browser. No API key, acco
 The public planning artifacts live in `devpost/`: `scope.md`, `prd.md`, `spec.md`, `checklist.md`, and the generated `app-map.html`.
 
 `devpost/learner-profile.md` is intentionally excluded from Git because it contains personal learning context.
+
+## License
+
+MIT. See `LICENSE`.
