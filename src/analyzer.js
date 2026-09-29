@@ -129,7 +129,8 @@ export function analyzeListing(rawText) {
       reasons: [],
       unknowns: ['No listing text provided.'],
       checklist: ['Paste a bounty or hackathon listing to analyze.'],
-      evidence: []
+      evidence: [],
+      adjustments: []
     };
   }
 
@@ -148,19 +149,25 @@ export function analyzeListing(rawText) {
   const reasons = [];
   const unknowns = [];
   const evidence = [];
+  const adjustments = [{delta: 50, label: 'Base fit'}];
+
+  const adjust = (delta, label) => {
+    score += delta;
+    adjustments.push({delta, label});
+  };
 
   if (signals.unpaid) {
-    score -= 60;
+    adjust(-60, 'Explicit unpaid/no-prize language');
     reasons.push('Explicit unpaid/no-prize language detected.');
     evidence.push({label: 'Unpaid signal', value: findEvidence(text, unpaidPatterns)});
   }
 
   if (signals.liveGate) {
-    score -= 45;
+    adjust(-45, 'Mandatory interview/live-call gate');
     reasons.push('Mandatory interview/live-call language conflicts with the no-interview profile.');
     evidence.push({label: 'Live gate', value: findEvidence(text, liveGatePatterns)});
   } else if (signals.explicitNoLiveGate) {
-    score += 18;
+    adjust(18, 'Explicit async/no-interview wording');
     reasons.push('The listing explicitly supports async/no-interview work.');
     evidence.push({label: 'Async signal', value: findEvidence(text, noLiveGatePatterns)});
   } else {
@@ -168,31 +175,32 @@ export function analyzeListing(rawText) {
   }
 
   if (signals.asyncSubmission) {
-    score += 18;
+    adjust(18, 'Code/repo/demo submission path');
     reasons.push('Code/repo/demo submission language matches the preferred workflow.');
     evidence.push({label: 'Submission', value: findEvidence(text, asyncSubmissionPatterns)});
   } else {
-    score -= 6;
+    adjust(-6, 'No clear code/repo/demo submission path');
     unknowns.push('No clear code/repo/demo submission path detected.');
   }
 
   if (signals.preHireGate) {
-    score -= 16;
+    adjust(-16, 'Pre-hire or assignment gate');
     reasons.push('A pre-hire or assignment gate adds selection risk before coding.');
     evidence.push({label: 'Pre-hire gate', value: findEvidence(text, preHirePatterns)});
   }
 
   if (reward) {
-    score += reward.numeric >= 1000 ? 12 : reward.numeric >= 250 ? 8 : 3;
+    const rewardDelta = reward.numeric >= 1000 ? 12 : reward.numeric >= 250 ? 8 : 3;
+    adjust(rewardDelta, `Reward amount ${reward.text}`);
     reasons.push(`Cash/reward signal detected: ${reward.text}.`);
     evidence.push({label: 'Reward', value: reward.text});
   } else {
-    score -= 8;
+    adjust(-8, 'Reward amount unknown');
     unknowns.push('Exact reward amount was not detected.');
   }
 
   if (deadline) {
-    score += 4;
+    adjust(4, 'Deadline stated');
     reasons.push('A deadline is stated, which makes execution planning possible.');
     evidence.push({label: 'Deadline', value: deadline});
   } else {
@@ -200,7 +208,7 @@ export function analyzeListing(rawText) {
   }
 
   if (signals.payout && !signals.unpaid) {
-    score += 5;
+    adjust(5, 'Payout/prize language');
   }
 
   score = Math.max(0, Math.min(100, Math.round(score)));
@@ -218,6 +226,7 @@ export function analyzeListing(rawText) {
     reasons,
     unknowns,
     checklist: buildChecklist({verdict, reward, deadline, signals}),
-    evidence: evidence.filter((item) => item.value)
+    evidence: evidence.filter((item) => item.value),
+    adjustments
   };
 }

@@ -12,6 +12,7 @@ test('GO for async code submission with explicit no-interview wording', () => {
   assert.equal(result.signals.liveGate, false);
   assert.equal(result.signals.asyncSubmission, true);
   assert.ok(result.score >= 72);
+  assert.ok(result.adjustments.some((item) => item.delta === 18 && /async/i.test(item.label)));
 });
 
 test('SKIP for mandatory interview/live gate', () => {

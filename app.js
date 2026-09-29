@@ -9,6 +9,7 @@ const verdict = document.querySelector('#verdict');
 const scoreValue = document.querySelector('#scoreValue');
 const scoreBar = document.querySelector('#scoreBar');
 const evidenceList = document.querySelector('#evidenceList');
+const adjustmentList = document.querySelector('#adjustmentList');
 const reasonList = document.querySelector('#reasonList');
 const unknownList = document.querySelector('#unknownList');
 const checklist = document.querySelector('#checklist');
@@ -48,6 +49,21 @@ function renderEvidence(items) {
   }
 }
 
+function renderAdjustments(items) {
+  adjustmentList.innerHTML = '';
+  for (const item of items) {
+    const node = document.createElement('div');
+    node.className = 'adjustment';
+    const delta = document.createElement('strong');
+    delta.className = item.delta >= 0 ? 'positive' : 'negative';
+    delta.textContent = item.delta >= 0 ? `+${item.delta}` : String(item.delta);
+    const label = document.createElement('span');
+    label.textContent = item.label;
+    node.append(delta, label);
+    adjustmentList.append(node);
+  }
+}
+
 function render(result) {
   emptyResult.classList.add('hidden');
   analysisResult.classList.remove('hidden');
@@ -59,6 +75,7 @@ function render(result) {
   scoreBar.dataset.kind = result.verdict.toLowerCase();
 
   renderEvidence(result.evidence);
+  renderAdjustments(result.adjustments);
   renderList(reasonList, result.reasons, 'No strong positive or negative signal detected.');
   renderList(unknownList, result.unknowns, 'No material unknowns detected.');
 

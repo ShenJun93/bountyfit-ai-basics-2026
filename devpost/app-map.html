@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BountyFit App Map</title>
+  <style>
+    body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;line-height:1.55;color:#18202b}
+    code{background:#eef1f5;padding:.1rem .3rem;border-radius:.3rem}
+    section{border-top:1px solid #dfe4ea;padding-top:18px;margin-top:22px}
+    li{margin:.45rem 0}
+  </style>
+</head>
+<body>
+  <h1>BountyFit — App Map</h1>
+  <p>Compact guide to the finished proof of concept and the path a bounty listing takes through the code.</p>
+
+  <section>
+    <h2>Core journey</h2>
+    <ol>
+      <li><code>index.html</code> provides the textarea, sample buttons, verdict area, evidence, score breakdown, and checklist.</li>
+      <li><code>app.js</code> reads the listing and calls <code>analyzeListing()</code>.</li>
+      <li><code>src/analyzer.js</code> extracts signals, applies score adjustments, chooses GO/REVIEW/SKIP, and creates next actions.</li>
+      <li><code>app.js</code> renders the result back into the page.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Files worth knowing</h2>
+    <ul>
+      <li><code>src/analyzer.js</code> — product kernel: evidence extraction and explainable scoring.</li>
+      <li><code>tests/analyzer.test.js</code> — regression cases for GO, REVIEW, SKIP, negated interview language, and vague listings.</li>
+      <li><code>app.js</code> — UI controller and rendering.</li>
+      <li><code>styles.css</code> — responsive operator-dashboard presentation.</li>
+      <li><code>server.js</code> — dependency-free local HTTP server for demo recording.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Practice to reuse</h2>
+    <p>When an agent makes a decision for a user, make the decision traceable. Keep the extraction, scoring, and rendering separate; add a regression test for each important policy edge case. In this project, the key example is treating “no interview required” differently from a mandatory interview.</p>
+  </section>
+
+  <section>
+    <h2>Run and verify</h2>
+    <p><code>node server.js</code> → open <code>http://127.0.0.1:4173</code></p>
+    <p><code>node --test</code> → verify the analyzer regression suite.</p>
+  </section>
+</body>
+</html>

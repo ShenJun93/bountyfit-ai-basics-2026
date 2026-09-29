@@ -317,11 +317,28 @@ textarea::placeholder { color: #596475; }
   margin-top: 18px;
 }
 
-.evidence-list {
+.evidence-list,
+.adjustment-list {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
+
+.adjustment {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #283342;
+  background: #0b1017;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: .76rem;
+}
+
+.adjustment strong { font-size: .75rem; }
+.adjustment .positive { color: #72e6b5; }
+.adjustment .negative { color: #ff7c86; }
+.adjustment span { color: #8d9aac; }
 
 .evidence {
   max-width: 100%;
