@@ -47,3 +47,18 @@ test('vague listing produces REVIEW with unknowns', () => {
   assert.equal(result.verdict, 'REVIEW');
   assert.ok(result.unknowns.length >= 2);
 });
+
+test('does not treat unpublished deadline or submit details as confirmed evidence', () => {
+  const result = analyzeListing('Prize details and deadline will be announced later. Submit details are not yet published.');
+  assert.equal(result.verdict, 'REVIEW');
+  assert.equal(result.deadline, null);
+  assert.equal(result.signals.asyncSubmission, false);
+  assert.ok(result.unknowns.some((item) => /deadline/i.test(item)));
+  assert.ok(result.unknowns.some((item) => /submission/i.test(item)));
+});
+
+test('submit artifact does not imply a deadline without a date signal', () => {
+  const result = analyzeListing('Submit a public GitHub repository for a $500 bounty. No interview required.');
+  assert.equal(result.signals.asyncSubmission, true);
+  assert.equal(result.deadline, null);
+});
