@@ -30,7 +30,8 @@ A public GitHub repository and short demo video are required for final submissio
 - Public repository: `https://github.com/ShenJun93/bountyfit-ai-basics-2026`
 - Public demo page: `https://bountyfit-demo-2026.vercel.app`
 - Direct demo MP4: `https://bountyfit-demo-2026.vercel.app/BountyFit-Devpost-Demo-v1.mp4`
-- Video verification: 77.74 seconds, 1920×1080, H.264 video + AAC audio; direct MP4 endpoint returns HTTP 200 with `video/mp4`.
+- Official submission video: `https://youtu.be/urzuOI22VMw`
+- Video verification: 77.74 seconds, 1920×1080, H.264 video + AAC audio; YouTube page resolves as `BountyFit Devpost Demo v1`.
 
 ## Look and Feel
 Dark slate background, warm off-white text, crisp cards, high-information density without clutter, large verdict block, subtle transitions, and accessible focus states. Interface copy is terse and operational.
