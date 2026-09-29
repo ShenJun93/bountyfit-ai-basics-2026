@@ -26,6 +26,12 @@ No runtime dependencies and no API key.
 - Demo: paste or load a sample, click Analyze, then show the verdict evidence and checklist.
 A public GitHub repository and short demo video are required for final submission; deployment is optional.
 
+### Submission sharing links
+- Public repository: `https://github.com/ShenJun93/bountyfit-ai-basics-2026`
+- Public demo page: `https://bountyfit-demo-2026.vercel.app`
+- Direct demo MP4: `https://bountyfit-demo-2026.vercel.app/BountyFit-Devpost-Demo-v1.mp4`
+- Video verification: 77.74 seconds, 1920×1080, H.264 video + AAC audio; direct MP4 endpoint returns HTTP 200 with `video/mp4`.
+
 ## Look and Feel
 Dark slate background, warm off-white text, crisp cards, high-information density without clutter, large verdict block, subtle transitions, and accessible focus states. Interface copy is terse and operational.
 
