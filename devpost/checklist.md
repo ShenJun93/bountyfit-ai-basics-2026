@@ -49,3 +49,4 @@ Activity mode: focused alternative
 
 ## Revisions
 - Surfaced exact score adjustments in the result — browser review showed that the initial UI explained factors but did not expose the numeric bonus/penalty behind the score.
+- Final automated kick-the-tires review found two false-positive evidence cases: `deadline will be announced later` was treated as a real deadline, and bare `submit` wording was treated as a code/repo/demo path. Tightened deadline/submission detection and added regression coverage. Verification after the fix: Node tests 7/7 PASS; BrowserPort GO/REVIEW/SKIP samples PASS; unpublished deadline/submission case now remains REVIEW with both facts unknown.

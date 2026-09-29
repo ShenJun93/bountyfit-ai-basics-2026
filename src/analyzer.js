@@ -1,5 +1,6 @@
 const MONEY_RE = /(?:\$|USD\s?|USDC\s?)(?:\s?)(\d{1,3}(?:[,.]\d{3})+|\d+(?:\.\d+)?)(?:\s?(?:USD|USDC))?/gi;
-const DEADLINE_RE = /(?:deadline|due|submit(?: by)?|closes?|ends?)\s*[:\-]?\s*([^\n.]{3,80})/i;
+const DEADLINE_RE = /(?:deadline|due|closes?|ends?|submit\s+by)\s*[:\-]?\s*([^\n.]{3,80})/i;
+const UNKNOWN_DEADLINE_RE = /\b(?:tbd|to be (?:announced|confirmed|determined)|will be announced(?: later)?|not yet (?:announced|published|confirmed|set)|coming soon|details? (?:soon|later))\b/i;
 
 const liveGatePatterns = [
   /\binterview\b/i,
@@ -21,7 +22,6 @@ const noLiveGatePatterns = [
 ];
 
 const asyncSubmissionPatterns = [
-  /\bsubmit(?:ted|ting)?\b/i,
   /\bgithub\b/i,
   /\brepositor(?:y|ies)\b/i,
   /\bpull\s+request\b/i,
@@ -81,7 +81,9 @@ function extractMoney(text) {
 
 function extractDeadline(text) {
   const match = text.match(DEADLINE_RE);
-  return match ? match[1].trim() : null;
+  if (!match) return null;
+  const candidate = match[1].trim();
+  return UNKNOWN_DEADLINE_RE.test(candidate) ? null : candidate;
 }
 
 function hasNegatedLiveGate(text) {
