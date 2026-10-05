@@ -74,6 +74,27 @@ h1 {
   font-size: .82rem;
 }
 
+.proof-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.proof-strip span {
+  border: 1px solid #26313f;
+  background: rgba(11, 15, 21, .76);
+  color: #78869a;
+  border-radius: 999px;
+  padding: 8px 11px;
+  font-size: .72rem;
+}
+
+.proof-strip strong {
+  color: #dce3eb;
+  margin-right: 4px;
+}
+
 .workspace {
   display: grid;
   grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
@@ -310,6 +331,15 @@ textarea::placeholder { color: #596475; }
 .meter span[data-kind="go"] { background: #72e6b5; }
 .meter span[data-kind="review"] { background: #ffd36d; }
 .meter span[data-kind="skip"] { background: #ff7c86; }
+
+.decision-summary {
+  margin: -10px 0 2px;
+  font-size: .74rem;
+  color: #7d8a9c;
+}
+
+.decision-summary[data-kind="complete"] { color: #72cfa8; }
+.decision-summary[data-kind="uncertain"] { color: #d7b86a; }
 
 .analysis section {
   border-top: 1px solid #202833;

@@ -8,6 +8,7 @@ const analysisResult = document.querySelector('#analysisResult');
 const verdict = document.querySelector('#verdict');
 const scoreValue = document.querySelector('#scoreValue');
 const scoreBar = document.querySelector('#scoreBar');
+const decisionSummary = document.querySelector('#decisionSummary');
 const evidenceList = document.querySelector('#evidenceList');
 const adjustmentList = document.querySelector('#adjustmentList');
 const reasonList = document.querySelector('#reasonList');
@@ -18,7 +19,8 @@ const copyButton = document.querySelector('#copyButton');
 const samples = {
   go: `Build With AI: Basics. $1,250 cash first prize. Deadline: October 26, 2026 at 5:00 PM EDT. Build a new app and submit a public GitHub repository plus a 1–3 minute demo video. No interview required. Judging is asynchronous after submission.`,
   review: `$250 Help Wanted bounty. Post a proposal with your root cause analysis and wait for assignment. You must be hired through Upwork before creating a pull request. GitHub implementation required after selection. Payment follows accepted and deployed work.`,
-  skip: `$500 developer challenge. Submit an initial repository by October 12. Shortlisted developers must complete a live technical interview on Zoom and a final live demo call before the winner is selected.`
+  uncertain: `$500 developer opportunity to improve a command-line tool. Prize details and deadline will be announced later. Submission instructions are not yet published. Remote collaboration.`,
+  skip: `$500 developer challenge. Deadline: October 12. Submit an initial repository. Shortlisted developers must complete a live technical interview on Zoom and a final live demo call before the winner is selected.`
 };
 
 function renderList(target, items, fallback) {
@@ -73,6 +75,8 @@ function render(result) {
   scoreValue.textContent = result.score;
   scoreBar.style.width = `${result.score}%`;
   scoreBar.dataset.kind = result.verdict.toLowerCase();
+  decisionSummary.textContent = `${result.evidence.length} verified signal${result.evidence.length===1?'':'s'} · ${result.unknowns.length} unresolved fact${result.unknowns.length===1?'':'s'}`;
+  decisionSummary.dataset.kind = result.unknowns.length ? 'uncertain' : 'complete';
 
   renderEvidence(result.evidence);
   renderAdjustments(result.adjustments);

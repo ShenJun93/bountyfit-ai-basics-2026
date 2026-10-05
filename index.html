@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BountyFit turns bounty text into an explainable pursue, review, or skip decision.">
+  <meta name="description" content="BountyFit is evidence-first opportunity triage for solo builders: it explains GO, REVIEW, or SKIP and refuses to invent missing facts.">
   <title>BountyFit — Opportunity triage for builders</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -14,9 +14,14 @@
       <div class="hero-row">
         <div>
           <h1>BountyFit</h1>
-          <p class="lede">Paste an opportunity. Get an explainable <strong>GO</strong>, <strong>REVIEW</strong>, or <strong>SKIP</strong> based on a strict code-submit, no-interview workflow.</p>
+          <p class="lede">Evidence-first opportunity triage for solo builders. BountyFit explains <strong>GO</strong>, <strong>REVIEW</strong>, or <strong>SKIP</strong> and refuses to invent a deadline, submission path, or interview rule the listing never stated.</p>
         </div>
-        <div class="profile-pill">Profile: async · code-first · cashflow</div>
+        <div class="profile-pill">Solo builder · async · code-first</div>
+      </div>
+      <div class="proof-strip" aria-label="BountyFit product principles">
+        <span><strong>Evidence-backed</strong> every score change is visible</span>
+        <span><strong>Unknown stays unknown</strong> no fabricated certainty</span>
+        <span><strong>Local-first</strong> listing text never leaves the browser</span>
       </div>
     </header>
 
@@ -35,9 +40,10 @@
 
         <div class="sample-row" aria-label="Example listings">
           <span>Try:</span>
-          <button class="chip-button" data-sample="go" type="button">GO sample</button>
-          <button class="chip-button" data-sample="review" type="button">REVIEW sample</button>
-          <button class="chip-button" data-sample="skip" type="button">SKIP sample</button>
+          <button class="chip-button" data-sample="go" type="button">GO · complete evidence</button>
+          <button class="chip-button" data-sample="review" type="button">REVIEW · pre-hire gate</button>
+          <button class="chip-button" data-sample="uncertain" type="button">REVIEW · facts missing</button>
+          <button class="chip-button" data-sample="skip" type="button">SKIP · live gate</button>
         </div>
 
         <button id="analyzeButton" class="primary-button" type="button" disabled>
@@ -52,7 +58,7 @@
         <div class="empty-result" id="emptyResult">
           <span class="step">02</span>
           <h2>Decision appears here</h2>
-          <p>BountyFit looks for the things that usually decide whether a solo builder should spend time: reward, deadline, submission path, live gates, pre-hire gates, and payout language.</p>
+          <p>BountyFit separates <strong>verified evidence</strong> from <strong>missing facts</strong> before it tells a solo builder where to spend time: reward, deadline, submission path, live gates, pre-hire gates, and payout language.</p>
           <div class="mini-grid">
             <div><strong>No black box</strong><span>Every bonus and penalty is visible.</span></div>
             <div><strong>No fake certainty</strong><span>Missing facts stay marked as unknown.</span></div>
@@ -72,6 +78,7 @@
           </div>
 
           <div class="meter" aria-hidden="true"><span id="scoreBar"></span></div>
+          <p class="decision-summary" id="decisionSummary"></p>
 
           <section>
             <h3>Extracted evidence</h3>
@@ -106,7 +113,7 @@
     </section>
 
     <footer>
-      <span>BountyFit v0.1</span>
+      <span>BountyFit v0.2 candidate</span>
       <span>Deterministic, explainable, credential-free.</span>
     </footer>
   </main>

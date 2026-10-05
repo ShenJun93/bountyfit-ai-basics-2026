@@ -2,7 +2,7 @@
 
 BountyFit is a small, local-first opportunity triage app built for Devpost's **Build With AI: Basics** hackathon.
 
-Paste a bounty or hackathon listing and BountyFit returns an explainable **GO**, **REVIEW**, or **SKIP** decision based on a strict async, code-submit, no-interview profile.
+Paste a bounty or hackathon listing and BountyFit returns an evidence-backed **GO**, **REVIEW**, or **SKIP** decision based on a strict async, code-submit, no-interview profile. Missing facts stay explicitly unknown instead of being guessed.
 
 ## Run
 
@@ -11,6 +11,10 @@ node server.js
 ```
 
 Open http://127.0.0.1:4173.
+
+Public demo: https://bountyfit-demo-2026.vercel.app
+
+Official demo video: https://youtu.be/urzuOI22VMw
 
 ## Test
 
@@ -27,6 +31,7 @@ node --test
 - pre-hire / assignment gates
 - explicit unpaid wording
 - missing facts that should remain unknown
+- a judge-facing evidence count that separates verified signals from unresolved facts
 
 The analyzer is deterministic and runs entirely in the browser. No API key, account, or backend is required.
 

@@ -62,3 +62,12 @@ test('submit artifact does not imply a deadline without a date signal', () => {
   assert.equal(result.signals.asyncSubmission, true);
   assert.equal(result.deadline, null);
 });
+
+test('judge-facing uncertain sample stays REVIEW with deadline and submission unresolved', () => {
+  const result = analyzeListing('$500 developer opportunity to improve a command-line tool. Prize details and deadline will be announced later. Submission instructions are not yet published. Remote collaboration.');
+  assert.equal(result.verdict, 'REVIEW');
+  assert.equal(result.deadline, null);
+  assert.equal(result.signals.asyncSubmission, false);
+  assert.ok(result.unknowns.some((item) => /deadline/i.test(item)));
+  assert.ok(result.unknowns.some((item) => /submission/i.test(item)));
+});
