@@ -46,6 +46,7 @@ BountyFit is an evidence-first opportunity triage app for solo builders. Paste a
 - Public repository: https://github.com/ShenJun93/bountyfit-ai-basics-2026
 - Required planning docs: `devpost/scope.md`, `devpost/prd.md`, `devpost/spec.md`
 - Public demo: https://bountyfit-demo-2026.vercel.app
+- Live audit on 2026-10-05: that URL currently serves a **video player page only** (`BountyFit`, 77.7 seconds), not the interactive analyzer. A real interactive deployment is therefore a presentation improvement, but it must remain separate from the required Devpost Try it out repo link.
 - Current YouTube demo: https://youtu.be/urzuOI22VMw
 - Devpost submission id: 1204322
 - Official update on 2026-10-04/05 reminds entrants that the **public repo URL must be present in the Try it out link field**. Verify this in the edit form before the deadline.
