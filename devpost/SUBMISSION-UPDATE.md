@@ -64,9 +64,13 @@ BountyFit is an evidence-first opportunity triage app for solo builders. Paste a
 
 ## External update gates
 
+Current official deadline shown by Devpost: **October 26, 2026 at 5:00 PM EDT**.
+
+- [x] Publish polished feature branch `work/bountyfit-prize-polish-v1`; remote tip before this docs-only update: `c8788583503e34f693740369a850b778a2593838`.
+- [x] Deploy and smoke-test a preview-only interactive candidate; GO / REVIEW-pre-hire / REVIEW-missing-facts / SKIP all PASS.
 - [ ] Verify public repo appears in Devpost **Try it out** link field.
+- [ ] Promote an interactive build to a stable public URL only with explicit approval.
 - [ ] Capture three judge-ready screenshots from the polished candidate.
 - [ ] Record/re-cut demo using `devpost/DEMO-V2.md`.
-- [ ] Deploy polished candidate only with explicit approval.
 - [ ] Edit existing Devpost submission only with explicit approval.
 - [ ] Re-check final video/repo links before saving.

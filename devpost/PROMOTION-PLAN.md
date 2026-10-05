@@ -30,9 +30,9 @@ Do not replace that required Try it out repo link with the live demo URL. If Dev
 
 ## Recommended promotion sequence
 
-### Gate A — Public repo update
+### Gate A — Public repo update — COMPLETE
 
-Requires explicit push approval.
+Public feature branch `work/bountyfit-prize-polish-v1` is published; remote tip before this docs-only update: `c8788583503e34f693740369a850b778a2593838`.
 
 1. Push the polished candidate commit/branch.
 2. Verify public repo still exposes:
@@ -43,9 +43,9 @@ Requires explicit push approval.
    - setup/run instructions.
 3. Keep repository public through judging.
 
-### Gate B — Interactive deployment
+### Gate B — Interactive deployment — PREVIEW COMPLETE
 
-Requires explicit deploy approval.
+A preview-only interactive deployment has been smoke-tested across all four judge-facing flows. Stable public promotion remains pending explicit approval.
 
 1. Deploy the polished repo root as a static web app to a new preview URL first.
 2. Smoke-test all four sample buttons:
