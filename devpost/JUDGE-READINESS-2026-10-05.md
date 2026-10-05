@@ -18,7 +18,10 @@ The official rules say judges may rely only on the text, images, and video. The 
 - Four judge-facing flows: GO, REVIEW/pre-hire, REVIEW/missing facts, SKIP/live gate.
 - 8/8 regression tests.
 - Public polished feature branch.
+- GitHub default branch now points to `work/bountyfit-prize-polish-v1`, so the canonical repo URL opens the optimized candidate without moving `main`.
+- Fresh clone from the canonical repo URL checks out the optimized default branch and passes **8/8 tests**.
 - Preview-only interactive candidate passed all four flows.
+- Vercel remains configured with `productionBranch=main`; production was not promoted.
 - Public repo has MIT license and local run instructions.
 
 ## Highest-ROI remaining work

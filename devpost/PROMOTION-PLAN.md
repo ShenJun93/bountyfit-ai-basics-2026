@@ -32,7 +32,7 @@ Do not replace that required Try it out repo link with the live demo URL. If Dev
 
 ### Gate A — Public repo update — COMPLETE
 
-Public feature branch `work/bountyfit-prize-polish-v1` is published; remote tip before this docs-only update: `c8788583503e34f693740369a850b778a2593838`.
+Public feature branch `work/bountyfit-prize-polish-v1` is published. GitHub now uses that branch as the repository default, so the canonical repo URL opens the optimized candidate while Vercel remains pinned to `productionBranch=main`. Fresh-clone verification from the canonical repo URL passes **8/8 tests**.
 
 1. Push the polished candidate commit/branch.
 2. Verify public repo still exposes:
