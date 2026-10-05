@@ -48,7 +48,7 @@ button { color: inherit; }
 }
 
 h1 {
-  margin: 8px 0 10px;
+  margin: 8px 0 .24em;
   font-size: clamp(3rem, 8vw, 6.5rem);
   line-height: .88;
   letter-spacing: -.075em;
